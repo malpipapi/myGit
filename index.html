@@ -1,0 +1,404 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+= QRna Api Specification
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:author: QRna
+:email: https://github.com/Team-Minionz/springboot-study-project-qrna
+
+== Common Responses
+=== Common Status Codes
+```java
+# 생성
+## status code: 201
+## Headers: Location
+
+# 조회
+## status code: 200
+
+# 업데이트
+## status code: 204
+
+# 삭제
+## status code: 204
+```
+
+=== Common Exceptions
+
+```java
+# 클라이언트 입력 예외
+## status code: 400
+
+# 인증 예외
+## status code: 401
+
+# NotFound 예외
+## status code: 404
+
+# 서버 내부 예외
+## status code: 500
+```
+
+=== 공통 체크사항
+```
+시간을 Parameter로 넘기지 않을 때, defaultValue = LocalDateTime
+```
+
+```
+ 오전 10시전 당일 데이터 요청시, 전날 데이터 저장/출력
+ ex) 현재 날짜 2021-08-05 09:59:59 요청시 2021-08-04 데이터 저장/출력
+```
+
+
+== 기능
+=== 일반 사용자
+==== 회원가입
+===== 성공
+.request
+include::{snippets}/user-signup-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-signup-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-signup-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-signup-fail/http-response.adoc[]
+==== 회원탈퇴
+===== 성공
+.request
+include::{snippets}/user-withdraw-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-withdraw-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-withdraw-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-withdraw-fail/http-response.adoc[]
+==== 로그인
+===== 성공
+.request
+include::{snippets}/user-login-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-login-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-login-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-login-fail/http-response.adoc[]
+==== 로그아웃
+===== 성공
+.request
+include::{snippets}/user-logout-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-logout-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-logout-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-logout-fail/http-response.adoc[]
+==== 마이페이지 조회
+===== 성공
+.request
+include::{snippets}/user-view-page-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-view-page-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-view-page-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-view-page-fail/http-response.adoc[]
+
+==== 즐겨찾기 등록
+===== 성공
+.request
+include::{snippets}/user-add-bookmark-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-add-bookmark-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-add-bookmark-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-add-bookmark-fail/http-response.adoc[]
+==== 즐겨찾기 삭제
+===== 성공
+.request
+include::{snippets}/user-delete-bookmark-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-delete-bookmark-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-delete-bookmark-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-delete-bookmark-fail/http-response.adoc[]
+==== 즐겨찾기 조회
+===== 성공
+.request
+include::{snippets}/user-view-bookmark-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-view-bookmark-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-view-bookmark-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-view-bookmark-fail/http-response.adoc[]
+
+=== 점주
+==== 회원가입
+===== 성공
+.request
+include::{snippets}/owner-signup-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-signup-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-signup-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-signup-fail/http-response.adoc[]
+==== 회원 탈퇴
+===== 성공
+.request
+include::{snippets}/owner-withdraw-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-withdraw-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-withdraw-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-withdraw-fail/http-response.adoc[]
+==== 로그인
+===== 성공
+.request
+include::{snippets}/owner-login-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-login-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-login-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-login-fail/http-response.adoc[]
+==== 로그아웃
+===== 성공
+.request
+include::{snippets}/owner-logout-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-logout-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-logout-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-logout-fail/http-response.adoc[]
+==== 마이페이지 조회
+===== 성공
+.request
+include::{snippets}/owner-view-page-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-view-page-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-view-page-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-view-page-fail/http-response.adoc[]
+==== 내 매장 조회
+===== 성공
+.request
+include::{snippets}/owner-shop-view-success/http-request.adoc[]
+
+.response
+include::{snippets}/owner-shop-view-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/owner-shop-view-fail/http-request.adoc[]
+
+.response
+include::{snippets}/owner-shop-view-fail/http-response.adoc[]
+==== 테이블 퇴장
+===== 성공
+.request
+include::{snippets}/table-exit-success/http-request.adoc[]
+
+.response
+include::{snippets}/table-exit-success/http-response.adoc[]
+
+===== 실패
+.request
+include::{snippets}/table-exit-fail/http-request.adoc[]
+
+.response
+include::{snippets}/table-exit-fail/http-response.adoc[]
+
+=== 매장
+==== 등록
+===== 성공
+.request
+include::{snippets}/shop-save-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-save-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-save-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-save-fail/http-response.adoc[]
+==== 수정
+===== 성공
+.request
+include::{snippets}/shop-update-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-update-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-update-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-update-fail/http-response.adoc[]
+==== 삭제
+===== 성공
+.request
+include::{snippets}/shop-delete-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-delete-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-delete-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-delete-fail/http-response.adoc[]
+==== 목록 조회
+===== 성공
+.request
+include::{snippets}/shop-all-view-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-all-view-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-all-view-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-all-view-fail/http-response.adoc[]
+==== 주변 매장 목록 조회
+===== 성공
+.request
+include::{snippets}/user-near-shop-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-near-shop-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-near-shop-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-near-shop-fail/http-response.adoc[]
+==== 주변 매장 목록 (혼잡도 정렬) 조회
+===== 성공
+.request
+include::{snippets}/user-near-shop-sort-success/http-request.adoc[]
+
+.response
+include::{snippets}/user-near-shop-sort-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/user-near-shop-sort-fail/http-request.adoc[]
+
+.response
+include::{snippets}/user-near-shop-sort-fail/http-response.adoc[]
+==== 테이블 목록 조회
+===== 성공
+.request
+include::{snippets}/table-list-view-success/http-request.adoc[]
+
+.response
+include::{snippets}/table-list-view-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/table-list-view-fail/http-request.adoc[]
+
+.response
+include::{snippets}/table-list-view-fail/http-response.adoc[]
+==== 매장 검색
+===== 성공
+.request
+include::{snippets}/shop-search-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-search-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-search-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-search-fail/http-response.adoc[]
+==== 지역 매장 검색
+===== 성공
+.request
+include::{snippets}/shop-search-region-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-search-region-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-search-region-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-search-region-fail/http-response.adoc[]
+
+==== 상세 정보 조회
+===== 성공
+.request
+include::{snippets}/shop-detail-success/http-request.adoc[]
+
+.response
+include::{snippets}/shop-detail-success/http-response.adoc[]
+===== 실패
+.request
+include::{snippets}/shop-detail-fail/http-request.adoc[]
+
+.response
+include::{snippets}/shop-detail-fail/http-response.adoc[]
+
+=== 방문기록
+==== 성공
+.request
+include::{snippets}/visit-checkin/http-request.adoc[]
+
+.response
+include::{snippets}/visit-checkin/http-response.adoc[]
+==== 실패
+.request
+include::{snippets}/visit-checkin-fail/http-request.adoc[]
+
+.response
+include::{snippets}/visit-checkin-fail/http-response.adoc[]
